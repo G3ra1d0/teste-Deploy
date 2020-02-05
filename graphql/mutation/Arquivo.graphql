@@ -1,0 +1,34 @@
+extend type Mutation {
+    createArquivo (
+        # nome: String!
+        # descricao: String
+        # idRepositorio: Int!
+        # idAutor: Int!
+        file: [Upload!]!
+    ): String 
+        # @can(ability: "create")
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Mutations\\ArquivoMutation@createArquivo") 
+
+    # updateEmpresa(
+    #     id: ID!
+    #     cnpj: String
+    #     razaoSocial: String
+    #     nomeFantasia: String
+    #     status: Status
+    #     dataSuspensao: Date
+    #     idResponsavel: Int
+    #     Endereco: EnderecoInputID
+    #     Telefones: [TelefoneInput!]
+    # ): Empresa 
+    #     @middleware(checks:["auth:api"])
+    #     @can(ability: "update", find: "id")
+    #     @field(resolver: "App\\GraphQL\\Mutations\\EmpresaMutation@UpdateEmpresa")
+
+    # deleteEmpresa(
+    #     id: ID!
+    # ): Empresa 
+    #     @can(ability: "delete", find: "id")
+    #     @middleware(checks:["auth:api"])
+    #     @field(resolver: "App\\GraphQL\\Mutations\\EmpresaMutation@DeleteEmpresa")
+}

@@ -1,0 +1,4 @@
+input TelefoneInput {
+    id: ID
+    numero: String
+}

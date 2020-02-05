@@ -1,0 +1,8 @@
+# input UserInput {
+#     id: ID!
+#     name: String!
+#     sobrenome: String! 
+#     email: String!
+#     cpf: String! 
+#     admin: Int,
+# }

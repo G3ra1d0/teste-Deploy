@@ -1,0 +1,38 @@
+extend type Mutation {
+    createEmpresa(
+        cnpj: String!
+        razaoSocial: String!
+        nomeFantasia: String!
+        status: Status
+        dataSuspensao: Date
+        Endereco: EnderecoInput! 
+        idResponsavel: Int !
+        Telefones: [TelefoneInput!]!  
+    ): Empresa 
+        @can(ability: "create")
+        @middleware(checks:["auth:api"])
+        # @can(ability: "create", model: "App\\Models\\Empresa" , policy: "App\\Policies\\EmpresaPolicy")
+        @field(resolver: "App\\GraphQL\\Mutations\\EmpresaMutation@CreateEmpresa") 
+
+    updateEmpresa(
+        id: ID!
+        cnpj: String
+        razaoSocial: String
+        nomeFantasia: String
+        status: Status
+        dataSuspensao: Date
+        idResponsavel: Int
+        Endereco: EnderecoInputID
+        Telefones: [TelefoneInput!]
+    ): Empresa 
+        @middleware(checks:["auth:api"])
+        @can(ability: "update", find: "id")
+        @field(resolver: "App\\GraphQL\\Mutations\\EmpresaMutation@UpdateEmpresa")
+
+    deleteEmpresa(
+        id: ID!
+    ): Empresa 
+        @can(ability: "delete", find: "id")
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Mutations\\EmpresaMutation@DeleteEmpresa")
+}

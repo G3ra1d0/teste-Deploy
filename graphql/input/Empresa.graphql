@@ -1,0 +1,15 @@
+input EmpresaInput {
+    cnpj: String!
+    razaoSocial: String!
+    nomeFantasia: String!
+    status: Status
+    dataSuspensao: Date
+}
+input EmpresaInputID {
+    id: ID!
+    cnpj: String!
+    razaoSocial: String!
+    nomeFantasia: String!
+    status: Status
+    dataSuspensao: Date
+}

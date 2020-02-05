@@ -1,0 +1,19 @@
+type User {
+    id: ID!
+    name: String!
+    sobrenome: String! 
+    email: String!
+    cpf: String! 
+    admin: Int,
+    responsavel: [Empresa] @method(name: "getResponsavel")
+    grupos: [Grupo!] @method(name: "getGrupos")
+    telefones: [Telefone!] @method(name: "getTelefones")
+    created_at: DateTime!
+    updated_at: DateTime!
+    status: StatusUser!
+}
+
+enum StatusUser {
+  Ativo 
+  Inativo
+}

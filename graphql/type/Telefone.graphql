@@ -1,0 +1,4 @@
+type Telefone {
+    id: ID!
+    numero: String!
+}

@@ -1,0 +1,20 @@
+input EnderecoInput {
+    rua: String!
+    numero: Int
+    cidade: String!
+    estado: String!
+    cep: String!
+    complemento: String
+    bairro: String!
+}
+
+input EnderecoInputID {
+    id: ID!
+    rua: String!
+    numero: Int
+    cidade: String!
+    estado: String!
+    cep: String!
+    complemento: String
+    bairro: String!
+}

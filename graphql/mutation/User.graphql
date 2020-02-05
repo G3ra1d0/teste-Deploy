@@ -1,0 +1,39 @@
+extend type Mutation {
+    createUser(
+        name: String! @rules(apply: ["required", "min:3"]),
+        sobrenome: String! @rules(apply: ["required", "min:4"]),
+        cpf: String! @rules(apply: ["required", "min:11", "max:11"]),
+        admin: Int,
+        email: String! @rules(apply: ["email", "unique:users"]),
+        password: String! @rules(apply: ["min:4"]) @bcrypt
+        grupos: [Int!] 
+        telefones: [TelefoneInput!]!
+        status: StatusUser!
+    ): User 
+        @can(ability: "create")
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Mutations\\UserMutation@Create")
+
+    updateUser(
+        id: ID!
+        name: String 
+        sobrenome: String 
+        cpf: String 
+        admin: Int,
+        email: String 
+        status: StatusUser
+        # password: String @rules(apply: ["min:4"]) @bcrypt
+        grupos: [Int!] 
+        telefones: [TelefoneInput!]
+    ): User 
+        @can(ability: "update", find: "id")
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Mutations\\UserMutation@Update")
+
+    deleteUser(
+        id: ID!
+    ): User 
+        @can(ability: "delete", find: "id")
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Mutations\\UserMutation@Delete")
+}

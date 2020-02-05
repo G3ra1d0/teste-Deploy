@@ -1,0 +1,10 @@
+type Endereco {
+    id: Int!
+    rua: String!
+    numero: Int
+    cidade: String!
+    estado: String!
+    cep: String!
+    complemento: String
+    bairro: String!
+}

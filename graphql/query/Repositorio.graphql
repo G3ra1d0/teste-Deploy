@@ -1,0 +1,28 @@
+extend type Query {
+    Repositorio(
+        id: ID!
+    ): Repositorio @middleware(checks:["auth:api"])
+
+
+    whereRepositorio(
+        nome: String!
+        idEmpresa: ID!
+    ): [Repositorio] 
+    @middleware(checks:["auth:api"])
+    @field(resolver: "App\\GraphQL\\Queries\\Repositorio@whereNome")
+
+    RepositorioPaiEmpresa(
+        idEmpresa: ID!
+    ): [Repositorio] 
+    @middleware(checks:["auth:api"])
+    @field(resolver: "App\\GraphQL\\Queries\\Repositorio@RepositorioPaiEmpresa")
+
+    # whereRepositorio(
+    #     nome: String!
+    #     idEmpresa: ID!
+    # ): String 
+    # @middleware(checks:["auth:api"])
+    # @field(resolver: "App\\GraphQL\\Queries\\Repositorio@whereNome")
+
+    caminhoRepositorio(id: ID!): [Int!] @field(resolver: "App\\GraphQL\\Queries\\Repositorio@caminhoRepositorio")
+}

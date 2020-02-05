@@ -1,0 +1,6 @@
+extend type Query {
+    Telefone(
+        id: ID
+        numero: String
+    ): Telefone 
+} 

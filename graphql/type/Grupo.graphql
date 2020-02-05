@@ -1,0 +1,16 @@
+type Grupo {
+    id: ID!
+    nome: String!
+    descricao: String
+    idEmpresa: Int!
+    Empresa: Empresa!  @method(name: "getEmpresa")
+    Users: [User]  @method(name: "getUsers")
+    GrupoRepositorios: [GrupoRepositorio]!  @method(name: "getRepositoriosPrivot")
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type GrupoRepositorio{
+    Repositorio: RepositorioOne!
+    Papel: String!
+}

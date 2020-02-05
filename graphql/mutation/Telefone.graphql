@@ -1,0 +1,14 @@
+extend type Mutation {
+    createTelefone(
+        numero: String! @rules(apply: ["required", "min:10", "max:11"])
+    ): Telefone! @field(resolver: "App\\GraphQL\\Mutations\\TelefoneMutation@CreateTelefone")
+
+    updateTelefone(
+        id: ID!
+        numero: String! 
+    ): Telefone @field(resolver: "App\\GraphQL\\Mutations\\TelefoneMutation@UpdateTelefone")
+
+    deleteTelefone(
+        id: ID!
+    ): Telefone @field(resolver: "App\\GraphQL\\Mutations\\TelefoneMutation@DeleteTelefone")
+}

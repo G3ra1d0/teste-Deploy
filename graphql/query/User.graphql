@@ -1,0 +1,18 @@
+extend type Query {
+    users: [User!]! 
+        @can(ability: "viewAny")
+        @middleware(checks:["auth:api"])
+        @all
+
+    user(id: ID @eq): User 
+        @middleware(checks:["auth:api"])
+        @can(ability: "view", find: "id" )
+        @find
+
+    userEmpresa(
+        idEmpresa: ID!
+    ): [User!]
+       @field(resolver: "App\\GraphQL\\Queries\\UserQuery@userEmpresa") 
+       @middleware(checks:["auth:api"])
+
+}

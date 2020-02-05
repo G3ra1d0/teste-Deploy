@@ -1,0 +1,17 @@
+enum Status {
+  Ativo 
+  Inativo
+  Suspenso
+}
+
+type Empresa {
+    id: ID!
+    cnpj: String!
+    razaoSocial: String!
+    nomeFantasia: String!
+    status: Status
+    dataSuspensao: Date
+    Endereco: Endereco @method(name: "getEndereco")
+    Telefone: [Telefone] @method(name: "getTelefone")
+    Responsavel: User @method(name: "getResponsavel")
+}

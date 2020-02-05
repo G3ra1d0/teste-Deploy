@@ -1,0 +1,19 @@
+extend type Query {
+    arquivosRepositorio (
+        idRepositorio: ID!
+    ): [Arquivo]        
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Queries\\Arquivo@arquivosRepositorio") 
+
+    arquivosSearch (
+        idEmpresa: ID!
+        conteudo: String
+        idRepositorio: ID
+        nome: String
+        descricao: String
+        updated_at: String
+    ):  [Arquivo]   
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Queries\\Arquivo@search") 
+
+} 

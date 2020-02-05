@@ -1,0 +1,29 @@
+extend type Mutation {
+    createRepositorio(
+       nome: String!
+       descricao: String
+       idEmpresa: Int!
+       idRepositorio: Int
+    ): Repositorio 
+        @middleware(checks:["auth:api"])
+        # @can(ability: "create")
+        @field(resolver: "App\\GraphQL\\Mutations\\RepositorioMutation@Create")
+
+    updateRepositorio(
+       id: ID!
+       nome: String
+       descricao: String
+       idEmpresa: Int
+       idRepositorio: Int
+    ): Repositorio 
+        # @can(ability: "update", find: "id")
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Mutations\\RepositorioMutation@Update")
+
+    deleteRepositorio(
+        id: ID!
+    ): Repositorio 
+        # @can(ability: "delete", find: "id")
+        @middleware(checks:["auth:api"])
+        @field(resolver: "App\\GraphQL\\Mutations\\RepositorioMutation@Delete")
+}

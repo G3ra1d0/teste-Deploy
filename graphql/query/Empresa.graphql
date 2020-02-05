@@ -1,0 +1,12 @@
+extend type Query {
+    Empresa (
+        id: ID!
+    ): Empresa        
+        @middleware(checks:["auth:api"])
+        @can(ability: "view", find: "id" )
+
+    Empresas: [Empresa!]! 
+        @can(ability: "viewAny")
+        @middleware(checks:["auth:api"])
+        @all
+} 

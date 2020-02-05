@@ -1,0 +1,11 @@
+extend type Query {
+    Grupo(
+        id: ID!
+    ): Grupo
+
+    GrupoEmpresa(
+        idEmpresa: ID!
+    ): [Grupo]
+    @middleware(checks:["auth:api"])
+    @field(resolver: "App\\GraphQL\\Queries\\Grupo@GrupoEmpresa") 
+}

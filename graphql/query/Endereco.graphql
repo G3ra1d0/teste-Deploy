@@ -1,0 +1,5 @@
+extend type Query {
+    Endereco(
+        id: ID!
+    ): Endereco
+}

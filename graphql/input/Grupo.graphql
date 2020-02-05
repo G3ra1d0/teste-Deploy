@@ -1,0 +1,9 @@
+enum Papel {
+    Editor
+    Visitante
+}
+
+input GruposRepositoriosInput {
+    idRepositorio: Int!
+    Papel: Papel
+}

@@ -1,0 +1,14 @@
+type Arquivo {
+    id: Int!
+    nome: String!
+    descricao: String
+    extensao: String!
+    modificado: Int!
+    idAutor: ID!
+    size: Int!
+    autor: User! @method(name: "getAutor")
+    idRepositorio: ID!
+    repositorio: Repositorio! @method(name: "getRepositorio")
+    created_at: DateTime!
+    updated_at: DateTime!
+}

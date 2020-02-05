@@ -1,0 +1,30 @@
+extend type Mutation {
+    createEndereco(
+        rua: String!
+        numero: Int
+        cidade: String!
+        estado: String!
+        cep: String!
+        complemento: String
+        bairro: String!
+    ): Endereco @field(resolver: "App\\GraphQL\\Mutations\\EnderecoMutation@CreateEndereco")
+
+    updateEndereco(
+        id: ID!
+        rua: String!
+        numero: Int
+        cidade: String!
+        estado: String!
+        cep: String!
+        complemento: String
+        bairro: String!
+    ): Endereco @field(resolver: "App\\GraphQL\\Mutations\\EnderecoMutation@UpdateEndereco")
+
+    # readEndereco(
+    #     id: ID!
+    # ): Endereco @field(resolver: "App\\GraphQL\\Mutations\\Endereco\\ReadEndereco")
+
+    deleteEndereco(
+        id: ID!
+    ): Endereco @field(resolver: "App\\GraphQL\\Mutations\\EnderecoMutation@DeleteEndereco")
+}

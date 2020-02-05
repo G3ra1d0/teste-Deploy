@@ -1,0 +1,21 @@
+type Repositorio {
+    id: ID!
+    nome: String!
+    descricao: String
+    idRepositorio: Int
+    Empresa: Empresa @method(name: "getEmpresa")
+    Repositorio: Repositorio @method(name: "getRepositorio")
+    Filhos: [Repositorio!] @method(name: "getFilhos")
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+type RepositorioOne {
+    id: ID!
+    nome: String!
+    descricao: String
+    idRepositorio: Int
+    Empresa: Empresa @method(name: "getEmpresa")
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
