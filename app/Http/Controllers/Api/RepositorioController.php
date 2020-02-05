@@ -9,6 +9,11 @@ use App\Models\Grupo;
 use App\User;
 
 class RepositorioController extends Controller {
+
+    public function Home(){
+        return "Hello word!";
+    }
+
     public function indexTree( $idEmpresa ) {
         return $this->EmpresaTree( $idEmpresa );
     }
