@@ -17,7 +17,6 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-
 Route::get('repositorio/indexTree/{idEmpresa}', 
         'Api\RepositorioController@indexTree'
 );
