@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'Api\RepositorioController@Home');
+Route::get('/GG', 'Api\RepositorioController@Home');
